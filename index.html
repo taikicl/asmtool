@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3DS-ASM簡単計算ツール</title>
+</head>
+<style>
+    body{
+        text-align: center;
+        font-family: sans-serif;
+    }
+    .ans{
+        background: #c0c0c0;
+    }
+    .author{
+        color: #808080;
+    }
+</style>
+<body>
+    <script>
+        function calculationBx(n1,n2){
+            let answer1 = parseInt(n2,16) - parseInt(n1,16);
+            let answer2 = answer1 / 4 - 2;
+            return answer2.toString(16).toUpperCase();
+        }
+        function create_bx(){
+            let base = document.getElementById("base");
+            let target = document.getElementById("target");
+            let ans = document.getElementById("ans");
+            let ans_code = document.getElementById("ans_code");
+            let bx_value = calculationBx(base.value,target.value);
+
+            ans.value = bx_value;
+            if(bx_value.length == 5){
+                ans_code.value = "EB" + "0" + bx_value;
+            }else{
+                ans_code.value = "EB" + bx_value;
+            }
+
+            
+        }
+    </script>
+    <h1>ASM簡単計算ツール</h1>
+    <br>
+    <p>(※小文字でもおｋ)</p>
+    <input type="text" size="20" placeholder="ベースアドレス入力" id="base">
+    <br>
+    <input type="text" size="20" placeholder="分岐先のアドレス入力" id="target">
+    <br>
+    <br>
+    <input type="radio" name="bl" checked>bl
+    <br>
+    <br>
+    <input type="button" value="作成" onclick="create_bx()">
+    <br>
+    <br>
+    <p>分岐値:</p>
+    <input type="text" size="20" id="ans" class="ans">
+    <p>コード:</p>
+    <input ype="text" size="20" id="ans_code" class="ans">
+    <br>
+    <br>
+    <br>
+    <br>
+    <p class="author">作成者:iris</p>
+    <p class="author">Discord-iris0#5259</p>
+</body>
+</html>
