@@ -20,6 +20,11 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: false
+  
+sitemap:
+    path: sitemap.xml
+    template: ./sitemap_template.xml
+    rel: false
 
 jobs:
   # Build job
